@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jurnal Umum</title>
+    <title>Jurnal Umum dengan Efek Suara</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* Gaya untuk memastikan layout */
@@ -11,7 +11,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            min-height: 50vh;
+            min-height: 100vh;
             font-family: Arial, sans-serif;
         }
 
@@ -69,28 +69,13 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
 
-        header button:nth-child(1) {
-            background-color: #007bff;
-            color: white;
-        }
-
-        header button:nth-child(1):hover {
+        header button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
         }
 
-        header button:nth-child(2),
-        header button:nth-child(3),
-        header button:nth-child(4) {
-            background-color: #007bff;
-            color: white;
-        }
-
-        header button:nth-child(2):hover,
-        header button:nth-child(3):hover,
-        header button:nth-child(4):hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
+        header button:active {
+            background-color: #003f7f;
         }
 
         /* Section styling */
@@ -98,6 +83,9 @@
             display: none;
             margin-top: 160px;
             padding: 20px;
+            background: linear-gradient(135deg, #e0f7fa 30%, #b2ebf2 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         section.active {
@@ -110,7 +98,7 @@
             color: #fff;
             padding: 9px;
             text-align: center;
-            position: fixed;
+            position: sticky;
             bottom: 0;
             left: 0;
             width: 100%;
@@ -122,24 +110,11 @@
             margin: 0;
         }
 
-        .iframe-container {
-            width: 100%;
-            height: 365px;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-  /* Gaya iframe agar lebih tinggi */
+        /* Gaya iframe agar lebih tinggi */
         .video-container {
             position: relative;
             width: 100%;
-            height: 370px; /* Tinggi video lebih tinggi */
+            height: 370px;
             margin: 0 auto;
             overflow: hidden;
             display: flex;
@@ -150,18 +125,56 @@
         video {
             max-width: 100%;
             height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form styling */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        form input, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        form button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #218838;
         }
 
         /* Table styles */
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         th, td {
-            border: 1px solid #ccc;
-            padding: 1px;
+            border: 1px solid #ddd;
+            padding: 12px;
             text-align: left;
         }
 
@@ -169,19 +182,38 @@
             background-color: #004080;
             color: white;
         }
-        /* Gaya iframe agar responsif dan tidak tertutupi footer */
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+
+        .iframe-container {
+            width: 100%;
+            height: auto;
+            margin: auto;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         iframe {
-            flex-grow: 1;
-            border: none;
             width: 100%;
+            height: 500px; /* Tinggi iframe diatur untuk menampilkan dengan baik */
+            border: none;
+            border-radius: 10px;
+        }
+.iframe-container {
+            width: 100%;
+            max-width: 800px; /* Atur lebar maksimal */
+            height: 500px; /* Atur tinggi iframe */
+            margin: 0 auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -191,22 +223,20 @@
         <h1>Belajar Jurnal Umum</h1>
         <h1>By. Herry Sofyandy P., M.Pd., Gr</h1>
         <ul>
-            <button type="button" onclick="showSection('home')">HOME</button>
-            <button type="button" onclick="showSection('materi')">MATERI</button>
-            <button type="button" onclick="showSection('simulasi')">SIMULASI</button>
-            <button type="button" onclick="showSection('kuis')">KUIS</button>
+            <button type="button" onclick="playClickSound(); showSection('home')" onmouseover="playHoverSound()">HOME</button>
+            <button type="button" onclick="playClickSound(); showSection('materi')" onmouseover="playHoverSound()">MATERI</button>
+            <button type="button" onclick="playClickSound(); showSection('simulasi')" onmouseover="playHoverSound()">SIMULASI</button>
+            <button type="button" onclick="playClickSound(); showSection('kuis')" onmouseover="playHoverSound()">KUIS</button>
         </ul>
     </header>
 
     <!-- HOME Section -->
     <section id="home" class="active">
         <div class="video-container">
-    <!-- Embed Video Lokal di Tengah Halaman -->
-    <div class="video-container">
-        <video controls autoplay muted loop>
-            <source src="pembatik.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+            <video controls autoplay muted loop>
+                <source src="pembatik.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
@@ -253,23 +283,43 @@
     <!-- KUIS Section -->
     <section id="kuis">
         <div class="iframe-container">
-    <!-- Menambahkan kode embed Wordwall di Tengah Halaman -->
-    <div class="iframe-container">
-       <iframe style="max-width:100%" src="https://wordwall.net/id/embed/4cb8d01d32dd40deb3434413637a9e53?themeId=49&templateId=36&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen></iframe>
-    </div>
+<div class="iframe-container">
+        <!-- Menyematkan Wordwall dengan iframe -->
+<iframe style="max-width:100%" src="https://wordwall.net/embed/311efdf839e34f99ae066546c20d74da?themeId=49&templateId=36&fontStackId=0" width="500" height="380" frameborder="0" allowfullscreen></iframe>
+        </div>
     </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2024. Herry Sofyandy Pranata. Hak ini dilindungi.</p>
     </footer>
 
-    <!-- Script to switch sections -->
+    <!-- Script to switch sections and play sounds -->
     <script>
+        // Fungsi untuk menampilkan section
         function showSection(sectionId) {
             document.querySelectorAll('section').forEach(function (section) {
                 section.classList.remove('active');
             });
             document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Fungsi untuk memutar suara klik
+        function playClickSound() {
+            var clickSound = document.getElementById('click-sound');
+            clickSound.play();
+        }
+
+        // Fungsi untuk memutar suara hover
+        function playHoverSound() {
+            var hoverSound = document.getElementById('hover-sound');
+            hoverSound.play();
+        }
+
+        // Fungsi untuk memutar suara saat halaman dimuat
+        window.onload = function() {
+            var loadSound = document.getElementById('load-sound');
+            loadSound.play();
         }
 
         const journalForm = document.getElementById('journal-form');
@@ -294,6 +344,11 @@
             journalForm.reset();
         });
     </script>
+
+    <!-- Elemen audio -->
+    <audio id="click-sound" src="hover.mp3"></audio>
+    <audio id="hover-sound" src="klik.mp3"></audio>
+    <audio id="load-sound" src="pembatik.mp3"></audio>
 
 </body>
 </html>
