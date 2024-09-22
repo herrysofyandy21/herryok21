@@ -343,6 +343,14 @@
             
             journalForm.reset();
         });
+        </script>
+<button onclick="reloadWorldwall()">Restart Worldwall</button>
+
+    function reloadWorldwall() {
+        var iframe = document.getElementById('myWorldwall');
+        iframe.src = iframe.src; // Refresh iframe
+    }
+</script>
     </script>
 
     <!-- Elemen audio -->
