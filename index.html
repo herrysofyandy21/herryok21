@@ -111,22 +111,20 @@
         }
 
         /* Gaya iframe agar lebih tinggi */
-        .video-container {
-            position: relative;
+        .iframe-container {
             width: 100%;
-            height: 370px;
+            height: 500px; /* Tinggi iframe diatur untuk menampilkan dengan baik */
             margin: 0 auto;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
-        video {
-            max-width: 100%;
-            height: auto;
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Form styling */
@@ -182,38 +180,6 @@
             background-color: #004080;
             color: white;
         }
-
-        .iframe-container {
-            width: 100%;
-            height: auto;
-            margin: auto;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 500px; /* Tinggi iframe diatur untuk menampilkan dengan baik */
-            border: none;
-            border-radius: 10px;
-        }
-.iframe-container {
-            width: 100%;
-            max-width: 800px; /* Atur lebar maksimal */
-            height: 500px; /* Atur tinggi iframe */
-            margin: 0 auto;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
 </head>
 <body>
@@ -227,17 +193,14 @@
             <button type="button" onclick="playClickSound(); showSection('materi')" onmouseover="playHoverSound()">MATERI</button>
             <button type="button" onclick="playClickSound(); showSection('simulasi')" onmouseover="playHoverSound()">SIMULASI</button>
             <button type="button" onclick="playClickSound(); showSection('kuis')" onmouseover="playHoverSound()">KUIS</button>
+            <button type="button" onclick="playClickSound(); showSection('refrensi')" onmouseover="playHoverSound()">REFRENSI</button>
         </ul>
     </header>
 
     <!-- HOME Section -->
     <section id="home" class="active">
-        <div class="video-container">
-            <video controls autoplay muted loop>
-                <source src="pembatik.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+        <div class="iframe-container">
+            <iframe src="https://www.canva.com/design/DAGRlB_SKFo/b9SzLP1JU1sEIJc3A_f70A/view?embed" allowfullscreen></iframe>
     </section>
 
     <!-- MATERI Section -->
@@ -251,6 +214,7 @@
     <section id="simulasi">
         <h2>Simulasi Pencatatan Jurnal Umum Otomatis</h2>
         <p>Tuliskan deskripsi transaksi, dan sistem akan otomatis mencatat transaksi ke dalam jurnal umum.</p>
+        <p>dikembangkan oelh Herry sofyandy.</p>
         <form id="journal-form">
             <label for="date">Tanggal Transaksi:</label>
             <input type="date" id="date" name="date" required>
@@ -283,9 +247,14 @@
     <!-- KUIS Section -->
     <section id="kuis">
         <div class="iframe-container">
-<div class="iframe-container">
-        <!-- Menyematkan Wordwall dengan iframe -->
-<iframe style="max-width:100%" src="https://wordwall.net/embed/00948395463742d0836ce3de8d8997b6?themeId=49&templateId=36&fontStackId=0&nocache=true" width="100" height="500" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.canva.com/design/DAGRlaN8p9s/yyWMD2hyJMflaukzMA0edg/view?embed" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- REFRENSI Section -->
+    <section id="refrensi">
+        <div class="iframe-container">
+            <iframe src="https://www.canva.com/design/DAGRlUSuk0c/UxAxjPYnCM_-gJJdnFSOYg/view?embed" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -343,7 +312,6 @@
             
             journalForm.reset();
         });
-
     </script>
 
     <!-- Elemen audio -->
